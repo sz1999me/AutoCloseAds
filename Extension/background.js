@@ -1,11 +1,17 @@
+var adsites = ["adv.videomega.tv"];
+
 chrome.tabs.onCreated.addListener(function(newTab) {
-  if (newTab.url.includes("adv.videomega.tv")) {
-    chrome.tabs.remove(newTab.id);
+  for (int i=0; i<adsites.length;i++){
+    if (newTab.url.includes(adsites[i])) {
+      chrome.tabs.remove(newTab.id);
+    }
   }
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  if (tab.url.includes("adv.videomega.tv")) {
-    chrome.tabs.remove(tab.id);
+  for (int i=0; i<adsites.length;i++){
+    if (tab.url.includes(adsites[i])) {
+      chrome.tabs.remove(tab.id);
+    }
   }
 });
